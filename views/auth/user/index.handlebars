@@ -1,0 +1,42 @@
+<h1>Usuarios</h1>
+<div id="message">
+    
+</div>
+<table id="mainTable">
+    <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Rol</th>
+            <th>correo</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="users">
+        <tr id="sampleTr">
+            <td><input required type="text" name="username" id=""></td>
+            <td>
+                <select name="rol" id="">
+                    <option value="ADMIN">Adminsitador</option>
+                    <option value="USER-FREE">Usuario Free</option>
+                    <option value="USER-PREMIUM">Usuario Premium</option>
+                    <option value="SUPORT">Soporte</option>
+                </select>
+            </td>
+            <td><input required ="email" name="email" id=""></td>
+            <td><button onclick="modifyUser(event)" name="edit">Actualizar</button></td>
+            <td><button onclick="deleteUser(event)" name="delete">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="5">
+                <button onclick="purge()">Eliminar usuarios inactivos</button>
+                <br>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<script src="/static/js/user/index.js"></script>

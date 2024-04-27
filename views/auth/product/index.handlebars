@@ -1,0 +1,19 @@
+<h1>Productos</h1>
+
+<div id='productBox' class=""></div>
+<div id='sample_item' class="" style="padding:10px 15px; display:block">
+    <div style="width:150px;height: 150px; background-color:aliceblue" class="">
+    </div>
+    <ul>
+        <li><strong name="title">[nombre_producto]</strong></li>
+        <li><strong>Precio:</strong><span name="price"></span></li>
+        <li><strong>Disponibles:</strong><span name="stock"></span></li>
+        <div class="">
+{{!--             <button value="1" onclick="modCounter(event)" type="button">+</button> --}}
+            <input type="number" onchange="apply(event)" min="0" value='0' name="" id="">
+{{!--             <button value="-1" onclick="modCounter(event)" type="button">-</button> --}}
+        </div>
+    </ul>
+</div>
+
+<script src="/static/js/product/index.js"></script>

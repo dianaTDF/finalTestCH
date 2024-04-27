@@ -1,0 +1,44 @@
+<h1>Crear Producto</h1>
+<div id="message">
+    
+</div>
+<form id='createForm' action="">
+    <label for="title">
+        Titulo:
+        <input name='title' type="text"></input>
+    </label><br>
+    <label for="code">
+        Codigo:
+        <input name='code' type="text"></input>
+    </label><br>
+    <label for="price">
+        Precio:
+        <input min='1'type="number" name="price" id="">
+    </label><br>
+    <label for="status">
+        Estado:
+        <select name="status" id="">
+            <option value="diponible">Disponible</option>
+            <option value="no diponible">No disponible</option>
+        </select>
+    </label><br>
+    <label for="stock">
+        Cantidad disponible:
+        <input min='1'type="number" name="stock" id="">
+    </label><br>
+    <label for="category">
+        Categoria:
+        <input name='category' type="text"></input>
+    </label><br>
+    <label for="description">
+        Descripción:
+        <textarea name="description" id="" cols="30" rows="10"></textarea>
+    </label><br>
+    <label for="thumbnails">
+        Link de imagen:
+        <input name='thumbnails' type="text"></input>
+    </label><br>
+    <input type="submit" value="Crear">
+</form>
+
+<script src="/static/js/product/create.js"></script>

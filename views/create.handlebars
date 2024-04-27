@@ -1,0 +1,55 @@
+<h2>Registro</h2>
+<div id="message">
+    
+</div>
+<form id='createForm' action="" method="post">
+    <label for="mail">
+        Correo:
+        <input required name="email" type="email">
+    </label>
+    <br>
+    <label for="username">
+        Nombre de usuario:
+        <input required name="username" type="text">
+    </label>
+    <br>
+    <label for="first_name">
+        Nombre:
+        <input required name="first_name" type="text">
+    </label>
+    <br>
+    <label for="last_name">
+        Apellido:
+        <input required name="last_name" type="text">
+    </label>
+    <br>
+    <label for="age">
+        Edad:
+        <input required name="age" type="number">
+    </label>
+    <br>
+    <div class="" style="display: flex;">
+            Desea registrarse con un plan de premium?
+        <label for="pass">
+            si
+            {{!-- no deberia dejar los roles expuestos en un rol --}}
+            {{!-- nomas ando algo corta de tiempo --}}
+            <input type="radio" value="USER-PREMIUM" name="rol" id="">
+        </label>
+        <label for="pass">
+            no
+            <input type="radio" checked value="USER-FREE" name="rol" id="">
+
+        </label>
+    </div>
+    <br>
+    <label for="pass">
+        Contraseña:
+        <input required name="password" type="password">
+    </label>
+    <br>
+    <input type="submit" value="Crear">
+
+</form>
+
+<script src="/static/js/user/create.js"></script>

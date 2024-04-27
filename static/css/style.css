@@ -1,0 +1,35 @@
+body{
+    display: block;
+    padding: 0%;
+    margin: 0%;
+
+    width: 100%;
+}
+#content{
+    height: auto;
+    width: 100%;
+    padding: 2% 5%;
+}
+header{
+    display:block;
+    padding-top: 10px;
+    height: 10%;
+    width: 100%;
+}
+footer{
+    position: inherit;
+    display:block;
+    margin-bottom: 0%;
+    position: fixed;
+    bottom: 0%;
+    height: 5%;
+    width: 100%;
+}
+
+
+/* --------------------------------- product -------------------------------- */
+#productBox{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 10px; 
+}
