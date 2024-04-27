@@ -43,7 +43,7 @@ router.get('/users',authenticateOrLogin,rolCheckerWeb(['ADMIN']), (req, res) => 
 /*                             rutas sin loggearse                            */
 /* -------------------------------------------------------------------------- */
 
-router.get('/login', (req, res) => {
+router.get(['/','/login'], (req, res) => {
     res.render('login.handlebars', { pageTitle: 'Login', layout: 'nolog' })
 })
 router.get('/create', (req, res) => {
