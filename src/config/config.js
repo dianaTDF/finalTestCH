@@ -1,8 +1,9 @@
 import { config } from 'dotenv'
 // import dotenv from 'dotenv'
 
-export const ONLINE_MODE= process.env.ONLINE_MODE || true
-if(ONLINE_MODE){
+export const ONLINE_MODE= process.env.ONLINE_MODE || false
+export const NODE_ENV= process.env.NODE_ENV || 'development'
+if(NODE_ENV=== 'development'){
   config() 
 }
 //despues ver lo de hacer config opcional

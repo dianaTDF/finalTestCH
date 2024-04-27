@@ -6,7 +6,7 @@ import { EmailService as ConsoleService } from "./console/email.console.service.
 
 let emailService
 
-//if(ONLINE_MODE){  //aun no tengo configurado el nodemailer, asi que de momento mandamo consola 
+//if(NODE_ENV ==='production'){  //aun no tengo configurado el nodemailer, asi que de momento mandamo consola 
 if(false){
     if(!emailService){
         emailService= new NodemailerService(NODEMAILER_GMAIL_OPTIONS)
