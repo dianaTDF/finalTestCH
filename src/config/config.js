@@ -7,13 +7,13 @@ if(NODE_ENV=== 'development'){
   config() 
 }
 //despues ver lo de hacer config opcional
-
+ 
 
 export const PORT = process.env.PORT || 8080
 export const MONGODB_CNX_STR= process.env.MONGODB_CNX_STR || "mongodb://localhost/asdasd"
 
 
-export const JWT_PRIVATE_KEY= process.env.JWT_PRIVATE_KEY  || ""
+export const JWT_PRIVATE_KEY= process.env.JWT_PRIVATE_KEY  || "asd"
 export const DB= process.env.DB || "mongoose" 
 export function fileDatabaseRoute(file){
   if(!process.env.FILE_DB) return "./fileDb/"+file+'.json'
@@ -30,7 +30,7 @@ export const NODEMAILER_GMAIL_OPTIONS = {
   }
 
   
-export const COOKIE_SECRET= process.env.COOKIE_SECRET || ""
+export const COOKIE_SECRET= process.env.COOKIE_SECRET || "asd"
 export const COOKIEOPTS = {
   httpOnly: true,
   maxAge: 1000 * 60 * 60 * 24 /* 1 dia */,
