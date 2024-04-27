@@ -3,7 +3,7 @@ import { userService } from "../service/index.js"
 
 export async function getAllController(req,res,next){
     try {
-    const users= await userService.getUsersFilter(req.params,['username','rol','email'])
+        const users= await userService.getUsersFilter(req.params,['username','rol','email'])
         //const users= await userService.getUsers(req.params)
         res.result(users)
     } catch (error) {

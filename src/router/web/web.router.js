@@ -20,6 +20,12 @@ router.get('/index',authenticateOrLogin, (req, res) => {
 router.get('/products/create',authenticateOrLogin,rolExludedWeb(['USER-FREE']), (req, res) => {
     res.render('auth/product/create.handlebars', { pageTitle: 'Crear producto'})
 })
+router.get('/products/{_id}/edit',authenticateOrLogin,rolExludedWeb(['USER-FREE']), (req, res) => {
+    res.render('auth/product/create.handlebars', { pageTitle: 'Crear producto'})
+})
+router.get('/products/{_id}',authenticateOrLogin, (req, res) => {
+    res.render('auth/product/create.handlebars', { pageTitle: 'Crear producto'})
+})
 
 router.get('/cart',authenticateOrLogin, (req, res) => {
     res.render('auth/cart/show.handlebars', { pageTitle: 'Carrito'})
@@ -43,7 +49,7 @@ router.get('/users',authenticateOrLogin,rolCheckerWeb(['ADMIN']), (req, res) => 
 /*                             rutas sin loggearse                            */
 /* -------------------------------------------------------------------------- */
 
-router.get('/login', (req, res) => {
+router.get(['/','/login'], (req, res) => {
     res.render('login.handlebars', { pageTitle: 'Login', layout: 'nolog' })
 })
 router.get('/create', (req, res) => {
