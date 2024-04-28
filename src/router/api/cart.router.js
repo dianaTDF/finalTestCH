@@ -5,17 +5,17 @@ import { getController,postController,putController,putProductController,cleanCo
 
 export const router= Router()
 
-router.get('/current',authenticateWithJwt,rolExluded(['USER-FREE']),getUserCartController)
-router.put('/current',authenticateWithJwt,rolExluded(['USER-FREE']),putUserCartController)
-router.put('/purchase',authenticateWithJwt,rolExluded(['USER-FREE']),purchaseController)
-router.put('/current/products/_pid',authenticateWithJwt,rolExluded(['USER-FREE']),putUserCartSingleProductController)
+router.get('/current',authenticateWithJwt,getUserCartController)
+router.put('/current/products/:_pid',authenticateWithJwt,putUserCartSingleProductController)
+router.put('/current',authenticateWithJwt,putUserCartController)
+router.put('/purchase',authenticateWithJwt,purchaseController)
 
 
-router.get('/_id',authenticateWithJwt,rolExluded(['USER-FREE']),getController)
+router.get('/:_id',authenticateWithJwt,getController)
 // parece que a este nivel no puedo corroborar 
 //si el el creador del producto es tambien  
-router.post('/',authenticateWithJwt,rolExluded(['USER-FREE']),postController)
-router.put('/_id',authenticateWithJwt,rolExluded(['USER-FREE']),putController)
-router.put('/_id/products/_pid',authenticateWithJwt,rolExluded(['USER-FREE']),putProductController)
-router.delete('/_id/products/',authenticateWithJwt,rolExluded(['USER-FREE']),cleanController)
-router.delete('/_id/products/_pid',authenticateWithJwt,rolExluded(['USER-FREE']),cleanProductController)
+router.post('/',authenticateWithJwt,postController)
+router.put('/:_id',authenticateWithJwt,putController)
+router.put('/:_id/products/:_pid',authenticateWithJwt,putProductController)
+router.delete('/:_id/products/',authenticateWithJwt,cleanController)
+router.delete('/:_id/products/:_pid',authenticateWithJwt,cleanProductController)

@@ -21,10 +21,10 @@ router.get('/products/create',authenticateOrLogin,rolExludedWeb(['USER-FREE']), 
     res.render('auth/product/create.handlebars', { pageTitle: 'Crear producto'})
 })
 router.get('/products/{_id}/edit',authenticateOrLogin,rolExludedWeb(['USER-FREE']), (req, res) => {
-    res.render('auth/product/create.handlebars', { pageTitle: 'Crear producto'})
+    res.render('auth/product/edit.handlebars', { pageTitle: 'Editar producto'})
 })
 router.get('/products/{_id}',authenticateOrLogin, (req, res) => {
-    res.render('auth/product/create.handlebars', { pageTitle: 'Crear producto'})
+    res.render('auth/product/show.handlebars', { pageTitle: 'Producto'})
 })
 
 router.get('/cart',authenticateOrLogin, (req, res) => {

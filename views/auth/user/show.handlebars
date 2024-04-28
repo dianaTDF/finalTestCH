@@ -1,8 +1,43 @@
 <h1>mostrar usuario</h1>
-
-<div class="">
-    <h3>Historial de compras</h3>
-</div>
 <div class="">
     <h3>Mis productos</h3>
+    <div id="container" style='display:grid; grid-template-columns: auto auto auto auto;'>
+        <div id="sample-product" style='display:grid; grid-gap:5px; grid-template-areas: "a b""c c";'>
+            <div class="">
+                    <div style="width:150px;height: 150px; background-color:aliceblue" class="">
+                    </div>
+            </div>
+            <div class="">
+                <h4 name="title"> sada</h4>
+                <ul>
+                    <li name="price"></li>
+                    <li name="stock"></li>
+                    <li name="status"></li>
+                    <li name="code"></li>
+                    <li name="category"></li>
+                </ul>
+            </div>
+            <div class="">
+                <p name="description">asdasdasdasd</p>
+            </div>
+        </div>
+    </div>
 </div>
+<div class="">
+    <h3>Historial de compras</h3>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>fecha</th>
+                <th>costo</th>
+                <th>productos</th>
+            </tr>
+        </thead>
+        <tbody id="tickets">
+            
+        </tbody>
+    </table>
+</div>
+
+<script src="/static/js/user/show.js"></script>

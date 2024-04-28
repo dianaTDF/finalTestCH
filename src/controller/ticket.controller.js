@@ -31,7 +31,9 @@ export async function getLastTicketUserController(req,res,next){
 
 export async function getTicketsUserController(req,res,next){
     try {
-        const tickets= await ticketService.getMany({users:req.user._id})
+        //console.log(req.params.limit)
+
+        const tickets= await ticketService.getMany({users:req.user._id},req.params.limit)
         res.result(tickets)
     } catch (error) {
         next(error)

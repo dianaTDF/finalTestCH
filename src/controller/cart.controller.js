@@ -81,7 +81,7 @@ export async function purchaseController(req,res,next){
     try {
         const products=req.body
         const ticket= await cartService.purchase({users:req.user._id},products)
-      console.log(ticket)
+      //console.log(ticket)
        res.result(ticket)
     } catch (error) {
         next(error)
@@ -90,7 +90,7 @@ export async function purchaseController(req,res,next){
 
 export async function putUserCartSingleProductController(req,res,next){
     try {
-        const carts= await cartService.put({users:req.user._id},req.body)
+        const carts= await cartService.updateProduct({users:req.user._id},req.params._pid,req.body.counter)
         res.result(carts)
     } catch (error) {
         next(error)

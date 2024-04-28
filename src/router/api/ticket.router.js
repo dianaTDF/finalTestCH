@@ -7,7 +7,7 @@ export const router= Router()
 
 
 router.get('/current-last',authenticateWithJwt,getLastTicketUserController)
-router.get('/current',authenticateWithJwt,getTicketsUserController)
+router.get('/current/:limit?',authenticateWithJwt,getTicketsUserController)
 router.post('/',authenticateWithJwt,postController)
 
 

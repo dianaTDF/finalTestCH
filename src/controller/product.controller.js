@@ -1,5 +1,13 @@
 import { productService } from "../service/index.js"
 
+export async function getCurrentController(req,res,next){
+    try {
+        const products= await productService.getMany({users:req.user._id})
+        res.result(products)
+    } catch (error) {
+        next(error)
+    }
+}
 export async function getAllController(req,res,next){
     try {
         const products= await productService.getMany(req.params)

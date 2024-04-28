@@ -25,11 +25,9 @@ createForm?.addEventListener('submit', async event => {
     .then(res => {
         
         if(res.status== 'success'){
-            console.log(res.status)
             sendMessage(`Producto ${res.payload.title} creado exitosamente`,'green')
           }else{
             sendMessage(res.message,'red')
-            console.log(res.status)
         }
     })
     .catch((error) =>{

@@ -28,7 +28,6 @@ export class MongooseDao {
 
   async updateOne(query, data) {
     return toPojo(await this.objectModel.updateOne(query,data).lean())
-    //throw new Error('NOT IMPLEMENTED')
 }
 
 async updateMany(query, data) {

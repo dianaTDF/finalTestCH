@@ -39,6 +39,23 @@ export class CartService extends SampleService{
 
     }
 
+    async updateProduct(searchData,pid,counter){
+        try {
+            if(counter<=0){
+                //eliminar
+                return  await this.dao.findProductAndDelete(searchData,pid,counter)
+            }else{
+                //actualizar
+                return  await this.dao.findProductAndUpdate(searchData,pid,counter)
+            }
+        } catch (error) {
+            const typedError = new Error(error.message)
+            typedError['type'] = 'INVALID_ARGUMENT'
+            throw typedError
+        }
+
+    }
+
     async purchase(searchData,products){    //tal vez deberia plantear este en Ticket service
         try {
 
@@ -49,7 +66,7 @@ export class CartService extends SampleService{
             for (let index = 0; index < products.length; index++) {
                 let id = products[index].product;
                 let counter = products[index].counter;
-                console.log(products.length)
+                //console.log(products.length)
 
                 
                 let product= await this.productDao.readOne({_id:id})

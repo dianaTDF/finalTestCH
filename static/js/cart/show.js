@@ -13,7 +13,7 @@
         
         let totalValue=0
         document.querySelectorAll("td[name='cost']").forEach(e => {
-            console.log(e.innerHTML)
+           // console.log(e.innerHTML)
             totalValue= totalValue + Number(e.innerHTML) 
         });
         total.innerHTML=totalValue
@@ -30,11 +30,11 @@
         let totalValue=0
 
         document.querySelectorAll("td[name='cost']").forEach(e => {
-            console.log(e.innerHTML)
+           // console.log(e.innerHTML)
             totalValue= totalValue + Number(e.innerHTML) 
         });
         document.getElementById('totalCost').innerHTML=totalValue
-        console.log(getProductArray())
+       //console.log(getProductArray())
     }
 
 
@@ -107,6 +107,38 @@ window.addEventListener('load', async () => {
 
 
 //en el caso de salir sin ejecutar la compra, constato posibles modificaciones
+
+async function updateCart(){
+    const formatedList=[]
+
+    const numList =document.querySelectorAll('input[type="number"]')
+    if(numList){
+
+        const newList =Array(...numList).filter(item => item.value >0) 
+        
+        newList.forEach(item => {
+            formatedList.push({
+                    product:item.dataset.id,
+                    counter:item.value,
+            })
+        });
+
+        await fetch('/api/carts/current', {
+                method: 'PUT',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formatedList)
+            }).then(response => {
+                ('enviado')
+            })
+            .catch(error => {
+                (error)
+            });
+
+    }
+}
+/* 
 window.addEventListener('unload', async function(event) {
     const formatedList=[]
 
@@ -138,6 +170,7 @@ window.addEventListener('unload', async function(event) {
     }
     event.returnValue = ''
 });
+ */
 
 
 /* -------------------------- parte para el ticket -------------------------- */
@@ -176,11 +209,24 @@ function makeTicket(products,amount){
 
 }
 
+Array(document.querySelector('a')).forEach(element => {
+    element.addEventListener('click', async ()=>{
+        await updateCart()
+    })
+    
+});
+
+
+
+
 
 const purchased= document.getElementById('buy')
-
-
  purchased.addEventListener('click', async ()=>{
+    //mirar esto despues
+    await updateCart()
+
+    
+
     const formatedList=[]
 
     const numList =document.querySelectorAll('input[type="number"]')

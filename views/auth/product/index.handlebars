@@ -2,15 +2,17 @@
 
 <div id='productBox' class=""></div>
 <div id='sample_item' class="" style="padding:10px 15px; display:block">
-    <div style="width:150px;height: 150px; background-color:aliceblue" class="">
-    </div>
-    <ul>
+i    <ul>
         <li><strong name="title">[nombre_producto]</strong></li>
         <li><strong>Precio:</strong><span name="price"></span></li>
         <li><strong>Disponibles:</strong><span name="stock"></span></li>
         <div class="">
 {{!--             <button value="1" onclick="modCounter(event)" type="button">+</button> --}}
-            <input type="number" onchange="apply(event)" min="0" value='0' name="" id="">
+        <form id='' action="">
+            <input type="number"  min="0" value='0' name="counter" id="">
+            <input type="hidden" name="">
+            <button type="button" onclick="addProd(event)" >Agregar</button>
+        </form>
 {{!--             <button value="-1" onclick="modCounter(event)" type="button">-</button> --}}
         </div>
     </ul>

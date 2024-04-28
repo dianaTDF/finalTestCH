@@ -34,9 +34,29 @@
 
     }
     */
-    function apply(event){
+    async function addProd(event){
+        const updateform =event.target.parentNode
+        const newCounter= updateform.querySelector('input[type="number"]') 
+        const prodId= updateform.querySelector('input[type="hidden"]') 
+        const value= {counter:newCounter.value }
+        //console.log(prodId.value)
 
-        //console.log(formatedList)
+        await fetch(`/api/carts/current/products/${prodId.value}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(value)
+            })      
+            .then(response => response.json())
+            .then(res => {
+                if(res.payload.products){
+                    console.log(res.payload)
+                }
+            })
+          .catch(error => {
+            console.log(error)
+          })
 
     }
     /*    
@@ -52,9 +72,11 @@
         post.querySelector("strong[name='title']").innerHTML=title
         post.querySelector("span[name='price']").innerHTML=price
         post.querySelector("span[name='stock']").innerHTML=stock
-        const numberInp =post.querySelector('input[type="number"]')
+        post.querySelector("input[type='hidden']").value=_id
+        post.querySelector('input[type="number"]').value=counter
+/*         const numberInp =
         numberInp.setAttribute('data-id',_id) 
-        numberInp.value=counter
+        numberInp */
         return post
     }
     
@@ -100,7 +122,7 @@ window.addEventListener('load', async () => {
 })
 
 //antes de salir, enviar la nueva lista al carrito
-window.addEventListener('unload', async function(event) {
+async function updateCart(){
     const formatedList=[]
 
     const numList =document.querySelectorAll('input[type="number"]')
@@ -111,7 +133,6 @@ window.addEventListener('unload', async function(event) {
                 counter:item.value,
         })
     });
-
     await fetch('/api/carts/current', {
             method: 'PUT',
             headers: {
@@ -125,5 +146,27 @@ window.addEventListener('unload', async function(event) {
             console.log(error)
           });
 
-    event.returnValue = ''
+}
+
+document.getElementsByName('counter').forEach(numInp => {
+    console.log(numInp)
+    /* numInp.addEventListener('change', async function(event) {
+        await updateCart()
+    }); */
 });
+
+/* 
+try {
+    window.addEventListener('unload', async function(event) {
+        await updateCart()
+        event.returnValue = ''
+    });
+} catch (error) {
+    document.addEventListener('visibilitychange', async function() {
+          if (document.visibilityState == 'hidden') { 
+              await updateCart()
+           }
+        event.returnValue = ''
+    });
+}
+ */

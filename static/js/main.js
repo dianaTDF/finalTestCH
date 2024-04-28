@@ -1,6 +1,6 @@
 window.addEventListener('load', async () => {
     const cookies = document.cookie; // Get all cookies as a string
-    console.log(cookies);
+   // console.log(cookies);
 /*     let response = await fetch('/api/users/current', {
         method: 'GET'
     }).then(response => {

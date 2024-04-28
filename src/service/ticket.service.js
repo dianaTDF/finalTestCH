@@ -28,5 +28,9 @@ export class TicketService extends SampleService{
         }
     }
 
+    async getMany(searchData,limit){
+        return await this.dao.readMany(searchData,limit)
+    }
+
 
 }
