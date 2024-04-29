@@ -8,7 +8,7 @@
     document.getElementById('message').appendChild(messaggeBody)
     setTimeout(()=>{
         messaggeBody.remove()
-    }, 5000);
+    }, 3000);
   }
 
   async function purge(){

@@ -174,6 +174,17 @@ window.addEventListener('unload', async function(event) {
 
 
 /* -------------------------- parte para el ticket -------------------------- */
+function sendMessage(message,color){
+    const messaggeBody = document.createElement('h3')
+    messaggeBody.style.color= color
+    messaggeBody.innerHTML= message
+    document.getElementById('message').appendChild(messaggeBody)
+    setTimeout(()=>{
+        messaggeBody.remove()
+    }, 3000);
+  }
+
+
 
 function makeTicket(products,amount){
     const title =document.createElement('h3')
@@ -249,7 +260,11 @@ const purchased= document.getElementById('buy')
       .then(res => {
         if(res.status == 'success'){
             const ticket= res.payload
-            makeTicket(ticket.products,ticket.amount)
+            if(ticket === 0){
+                sendMessage("Proceso completo <br> cantidad de productos no disponibles <br> costo de compra $0","green")
+            }else{
+                makeTicket(ticket.products,ticket.amount)
+            }
 
 
         }else{

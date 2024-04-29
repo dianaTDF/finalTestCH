@@ -5,7 +5,7 @@ function sendMessage(message,color){
     document.getElementById('message').appendChild(messaggeBody)
     setTimeout(()=>{
         messaggeBody.remove()
-    }, 5000);
+    }, 3000);
   }
 
 
@@ -52,7 +52,7 @@ createForm?.addEventListener('submit', async event => {
           if (response.status === 201) {
             setTimeout(()=>{
                 window.location.href = '/index'
-            }, 3000);
+            }, 4000);
           } else {
             const error = await response.json()
             alert(error.message)

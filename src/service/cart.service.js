@@ -4,11 +4,12 @@ import {randomUUID} from 'node:crypto'
 import { SampleService } from "./sample/sample.service.js"
 
 export class CartService extends SampleService{
-    constructor(dao, userDao, productDao,ticketDao){
+    constructor(dao, userDao, productDao,ticketDao,emailService){
         super(dao)
         this.userDao= userDao
         this.productDao= productDao
         this.ticketDao= ticketDao
+        this.emailService= emailService
 
     }
 
@@ -92,25 +93,34 @@ export class CartService extends SampleService{
                     })
                 }
             }
-            //ya abiendo actualizado los productos, creamos el ticket
-            const newTicket= new Ticket({
-                _id :randomUUID(),
-                users :searchData.users,
-                amount :totalPurchase,
-                products :ticketProductsList,
-                created_at :Date.now()
-            })
-            
-            //no estoy del todo segura por que no actualiza el carrito
+
+                   //no estoy del todo segura por que no actualiza el carrito
             //PENDIENTE a VER
+
+
             const updatedCart= await this.updateProducts(searchData,productsList)
-            
 
-            //crear y mandar el correo
-            //PENDIENTE a VER
 
-            //return {carrito:productsList,ticket:newTicket.toPojo()} //lo use para probar los datos
-            return await this.ticketDao.create(newTicket.toPojo())
+            if(totalPurchase !=0){
+                //ya abiendo actualizado los productos, creamos el ticket
+                const newTicket= new Ticket({
+                    _id :randomUUID(),
+                    users :searchData.users,
+                    amount :totalPurchase,
+                    products :ticketProductsList,
+                    created_at :Date.now()
+                })
+                
+                //crear y mandar el correo
+                //PENDIENTE a VER
+                const user= await this.userDao.readOne({_id:searchData.users})
+                await this.emailService.send({ to: user.email , subject: 'Registro exitoso', html: `${user.username} Se ha registrado exitosamente su compra, ve al detalle en la plataforma` })
+
+                //return {carrito:productsList,ticket:newTicket.toPojo()} //lo use para probar los datos
+                return await this.ticketDao.create(newTicket.toPojo())
+            }
+
+            return 0
         
         } catch (error) {
             const typedError = new Error(error.message)

@@ -22,6 +22,6 @@ const ticketDao = getTicketDao()
 //serices
 export const userService= new UserService(userDao, emailService, cartDao)
 export const productService= new ProductService(productDao, userDao, emailService)
-export const cartService= new CartService(cartDao, userDao,productDao,ticketDao)
+export const cartService= new CartService(cartDao, userDao,productDao,ticketDao, emailService)
 export const ticketService= new TicketService(ticketDao, userDao, emailService)
 
